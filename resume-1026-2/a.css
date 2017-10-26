@@ -1,0 +1,223 @@
+body{
+    background:#EFEFEF;
+    margin: 0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+hr{
+    height: 0;
+    border: none;
+    border-top: 1px solid #DEDEDE;
+
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.top-nav-bar{
+    padding-top:20px; 
+    padding-bottom: 12px;
+    padding-left: 0;
+    padding-right: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.top-nav-bar-inner{
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.top-nav-bar nav{
+    padding-top:11px;
+    padding-bottom: 5px;
+}
+
+.top-nav-bar nav>ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.top-nav-bar nav>ul>li{
+    float:left;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+
+.top-nav-bar nav>ul>li>a{
+    font-size: 12px;
+    color: #B7B7B7;
+    text-decoration: none;
+    font-weight: bold;
+    border-top: 3px;
+    border-bottom: 3px solid transparent;
+    display: block;
+    padding-top: 1px;
+    padding-bottom: 2px;
+
+}
+
+.top-nav-bar nav>ul>li>a:hover{
+    border-bottom: 3px solid #e06567;
+}
+
+.top-nav-bar .logo{
+    font-size: 24px;
+    font-family:Arial, Helvetica, sans-serif;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+
+.top-nav-bar .logo .rs{
+    margin-right:4px;
+    color: #E6686A;
+}
+
+.top-nav-bar .logo .card{
+    color: #9A9DA2;
+}
+ 
+.banner{
+    background-image: url(./img/wallhaven-578896.jpg);
+    height:515px;
+    border: 1px solid red;
+    background-position: center center;
+    background-size: cover;
+}
+
+.rs{
+    font-weight: bold;
+}
+
+.card{
+    font-weight: bold;
+}
+
+.banner .mask{
+    height: 515px;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.usercard{
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+}
+
+.usercard .welcome{
+    background: #E6686A;
+    color: white;
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    line-height: 22px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.usercard .welcome .triangle{
+    display: block;
+    border: 10px solid transparent;
+    width: 0px;
+    border-left-color:#E6686A;
+    border-top-width: 0px;
+    position: absolute;
+    left: 6px;
+    top: 100%;
+}
+
+.usercard .picture{
+    float: left;
+}
+
+.usercard .text{
+    float: left;
+    margin-left:65px; 
+    width: 450px;
+}
+
+.usercard .text h1{
+    margin-top: 15px;
+}
+
+.usercard .text hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+.usercard .pictureAndText{
+    padding: 50px;
+}
+
+.usercard dl dt,
+.usercard dl dd{
+    float: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.usercard dl dt{
+    width: 30%;
+    font-weight: bold;
+}
+
+.usercard dl dd{
+    width: 70%;
+    color: #9da0a7;
+}
+
+.usercard > footer.media{
+    background: #E6686A;
+    text-align: center;
+}
+
+.usercard > footer.media > a{
+    display: inline-block;
+    width: 40px;
+    line-height: 33px;
+    padding: 3px 0;
+    border-radius: 50%;
+    margin: 13px;
+}
+
+.usercard > footer.media > a:hover{
+    background: #CF5D5F;
+}
+
+.usercard svg{
+    width: 33px;
+    height: 33px;
+    fill: white;
+    vertical-align: top;
+}
+
+
+
+
+
+
