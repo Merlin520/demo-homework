@@ -1,0 +1,642 @@
+	
+第一部分  HTML相关组成
+	HTML 是一种标记语言。它告诉浏览器如何显示内容。HTML把内容（文字，图片，语言，影片等等）和表现（这个内容是如何显示，比如文字用什么颜色显示等等）分开。HTML使用预先定义的元素集合来识别内容形态。 元素包含一个以上的标记来包含或者表达内容。标记利用尖括号表示，而结束标记（用来指示内容尾端）则在前面加上斜线。
+
+一、基础的HTML编码结构如下：
+<html>
+<head>
+    <title>这是标题</title>
+</head>
+<body>
+    这是示例文本...
+    <!-- 我们使用这种写法来标记注释 -->
+    <!-- 页面标签和其他的内容都在这里.... -->
+    <!-- 这是在浏览器中显示的实际区域 -->
+</body>
+</html>
+
+二、元素——基本的构造区块
+	HTML由不同元素的集合组成。元素定义了它们所包含内容的语义。元素包含了两个相匹配的元素标签（tag）之中所有的内容，当然也包含了标签本身。一些元素都有着明确的含义， 例如 ”这是一张图片”，“这是一个标题” 或者 “这是一个有序列表”。 另外一些则没这么特殊，例如 "这是本页面的一个节" 或者"这是文本的一部分"，但是就技术层面上而言它们都是必不可少的，例如标记一些在网页中不会被显示的内容。不论如何,所有的html元素都有其特定的语义及存在价值。
+
+三、标签
+	HTML文档由纯文本表示。 你可以使用任意支持纯文本编写保存的文本编辑器来编写HTML文档，但大部分HTML程序员更倾向于使用专门的编辑器，这些编辑器支持语法高亮和DOM显示，例如Notepad++和sublime Text。 标签(Tag)的名字不区分大小写。 但是,W3C (维护了HTML标准的国际性性联盟)建议使用小写 ( XHTML 同样要求使用小写).HTML 为由一对尖括号（<>所括起来的内容赋予了特定含义.这样的标识称为一个标签（tag）。上述例子中有一个起始标签（start tag）和一个结束标签（end tag）。结束标签与起始标签在内容上是一样的，但结束标签会在小于符号（<）后多一个整斜线/。 大多数 HTML 元素由一个起始标签和一个结束标签标识。起始标签和结束标签应成对出现，也就是说在一个起始标签之后应有其对应的结束标签。由两个标签（起始标签和结束标签）构成的元素而言，缺少其中之一，这个元素都可能会被认为是无效的。开始标签常被称为开放标签（opening tag），结束标签常称为闭合标签（closing tag)。
+
+四、属性
+	开始标签可能包含一些信息，这些信息叫做元素的特性，包括两部分:特性名、特性值。
+	一些元素可以只有特性名没有特性值。它们的特性名类似“是否”，“有或没有”，所以可以省略特性值，所以下面三种写法都是一样的意思:
+	<input required="required">
+	<input required="">
+	<input required>
+	特性值如果有包含空格就要用引号，单双引号都可以。如果特性值是单个词就可以不用引号，但为了避免出错和易于识别一般会加上引号:
+
+五、命名字符参考
+	命名字符参考 (一般被称作实体) 用于表示在HTML中具有特定含义的字符. 举例说，HTML将“>”和“<”符号理解为标签分隔符。所以，当你想在文本中用">"符号表达“大于”的含义时，你可以使用命名字符参考来作为替代。 以下例举了四个非常重要的常用实体：
+	&gt; 表示大于符号">" (>)
+	&lt; 表示小于符号"<" (<)
+	&amp; 表示和符号"and"(&)
+	&quot; 表示引用符号" (")
+	除这四个外，还有许多其他的实体符号, 但以上所举的例子是实体符号中最为重要的几个，原因在于他们所表示的原本字符在HTML中具有特定的含义。（即是说，如果你没有在HTML文本中使用实体符号来替代原本符号的话，浏览器可能会错误地理解你的意图。）
+
+六、文档类型和注释
+	除标签，文本内容和实体外，一个HTML文档一定需要在第一行做出文档类型声明(doctype declaration)。在现代HTML中，这句声明书写如下：
+	<!DOCTYPE html>
+	HTML拥有一个允许我们在HTML文档添加注释的机制。注释并不会在浏览器渲染页面时一并呈现给用户，而是隐藏在源代码内。这个机制使我们能十分方便地为HTML文档的某个部分添加注释信息、给你的同事预留便笺、或者给你自己做个提示。HTML注释被如下符号封闭：
+	<!-- 这是评论文本 -->
+
+七、精简的文档
+	如下是一个迷你的HTML示例文档
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+ 	 <meta charset="utf-8" />
+ 	 <title>A tiny document</title>
+	</head>
+	<body>
+ 	 <h1>Main heading in my document</h1>
+  	<!-- Note that it is "h" + "1", not "h" + the letter "one" -->
+ 	 <p>Loook Ma, I am coding <abbr title="Hyper Text Markup Language">HTML</abbr>.</p>
+	</body>
+	</html>
+
+第二部分 HTML元素、标签用法
+
+	1.根元素 <html> 
+	HTML <html> 元素 表示一个HTML文档的根（顶级元素），所所以它也被称为根元素。其他所有其他元素必须是此元素的后代。
+
+	2.文档元数据
+	元数据（Metadata）含有页面的相关信息，包括样式、脚本及数据，能帮助一些软件 (如搜索引擎， 浏览器等等）更好地运用和渲染页面。对于样式和脚本的元数据，可以直接在网页里定义，也可以链接到包含相关信息的外部文件。
+
+	（1） <base>
+	HTML <base> 元素 指定用于一个文档中包含的所有相关URL的基本URL。一份中只能有一个<base>元素。
+
+	（2）<head>  
+	HTML <head> 元素 规定文档相关的通用信息（元数据），包括文档的标题，文档的样式和脚本的链接（定义）等。
+
+	（3）<link>
+	HTML 中<link>元素指定了外部资源与当前文档的关系. 这个元素的使用方法包括为导航定义关系框架.这个元素经常用来链接css文件。
+
+
+
+
+	内容分区元素
+
+	内容分区元素允许你将文档内容从逻辑上进行组织划分。使用包括页眉(header)、页脚(footer)、导航(nav)和标题(h1~h6)等分区元素，来为页面内容创建明确的大纲，以便区分各个章节的内容。
+
+	1.<article>
+	表示文档、页面、应用或网站中的独立结构，其意在成为可独立分配的或可复用的结构，如在发布中，它可能是论坛帖子、杂志或新闻文章、博客、用户提交的评论、交互式组件，或者其他独立的内容项目。
+	实例：
+		<article class="film_review">
+  <header>
+    <h2>Jurassic Park</h2>
+  </header>
+  <section class="main_review">
+    <p>Dinos were great!</p>
+  </section>
+  <section class="user_reviews">
+    <article class="user_review">
+      <p>Way too scary for me.</p>
+      <footer>
+        <p>
+          Posted on <time datetime="2015-05-16 19:00">May 16</time> by Lisa.
+        </p>
+      </footer>
+    </article>
+    <article class="user_review">
+      <p>I agree, dinos are my favorite.</p>
+      <footer>
+        <p>
+          Posted on <time datetime="2015-05-17 19:00">May 17</time> by Tom.
+        </p>
+      </footer>
+    </article>
+  </section>
+  <footer>
+    <p>
+      Posted on <time datetime="2015-05-15 19:00">May 15</time> by Staff.
+    </p>
+  </footer>
+</article>
+	生成：
+	Jurassic Park
+
+Dinos were great!
+
+Way too scary for me.
+
+Posted on May 16 by Lisa.
+
+I agree, dinos are my favorite.
+
+Posted on May 17 by Tom.
+
+Posted on May 15 by Staff.
+
+	2.<aside>
+	表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分并且可以被单独的拆分出来而不会使整体受影响。其通常表现为侧边栏或者嵌入内容。他们通常包含在工具条，例如来自词汇表的定义。也可能有其他类型的信息，例如相关的广告、笔者的传记、web 应用程序、个人资料信息，或在博客上的相关链接。
+	实例：
+	<article>
+  <p>
+    The Disney movie <em>The Little Mermaid</em> was
+    first released to theatres in 1989.
+  </p>
+  <aside>
+    The movie earned $87 million during its initial release.
+  </aside>
+  <p>
+    More info about the movie...
+  </p>
+ </article>
+	生成：
+	The Disney movie The Little Mermaid was first released to theatres in 1989.
+
+	The movie earned $87 million during its initial release.
+
+	More info about the movie...
+
+    3.<footer>
+	 表示最近一个章节内容或者根节点（sectioning root ）元素的页脚。一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。
+	 实例：
+	 	<footer>
+  		Some copyright info or perhaps some author info for an &lt;article&gt;?
+		</footer>
+	 生成：
+	 	Some copyright info or perhaps some author info for an <article>?
+
+	 4.<header>
+	 表示一组引导性的帮助，可能包含标题元素，也可以包含其他元素，像logo、分节头部、搜索表单等。
+	 实例：
+	 	<header>
+  		a logo
+	    </header>
+	 生成：
+	 	a logo
+
+	 5.<nav>
+	 HTML导航栏 (<nav>) 描绘一个含有多个超链接的区域，这个区域包含转到其他页面，或者页面内部其他部分的链接列表.
+	 实例：
+	 <nav>
+    	<ul>
+    	 <li><a href="#">Home</a></li>
+    	 <li><a href="#">About</a></li>
+         <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    生成：
+    Home
+    About
+    Contact
+
+    6.<section>
+    表示文档中的一个区域（或节），比如，内容中的一个专题组，一般来说会有包含一个标题（heading）。一般通过是否包含一个标题 (<h1>-<h6> element) 作为子节点 来 辨识每一个<section>。
+    实例：
+  	<section>
+      <h1>Heading</h1>
+      <p>Bunch of awesome content</p>
+    </section>
+    生成：
+    Heading
+
+    Bunch of awesome content
+
+   文本内容
+
+   使用 HTML 文本内容元素来组织在开标签 <body> 和闭标签 </body> 里的块或章节的内容。这些元素能标识内容的宗旨或结构。
+
+	1.<blockquote>
+	HTML 块级引用元素,代表其中的文字是引用内容。通常在渲染时，这部分的内容会有一定的缩进（注 中说明了如何更改）。若引文来源于网络，则可以将原内容的出处 URL 地址设置到 cite 特性上，若要以文本的形式告知读者引文的出处时，可以通过 <cite> 元素-是一个标注引用的信息的来源文档或者相关信息的URL。通常用来描述能够解释引文的上下文或者引用的信息。
+	实例:
+		<blockquote cite="http://developer.mozilla.org">
+  		<p>This is a quotation taken from the Mozilla Developer Center.</p>
+		</blockquote>
+	生成:
+		This is a quotation taken from the Mozilla Developer Center.
+
+	2. <dl>、<dt>、<dd>
+	<dl> 元素 （或 HTML 描述列表元素）是一个包含术语定义以及描述的列表，通常用于展示词汇表或者元数据 (键-值对列表);
+	<dt> 元素 （或 HTML 术语定义元素）用于在一个定义列表中声明一个术语。该元素仅能作为 <dl> 的子元素出现。通常在该元素后面会跟着 <dd> 元素， 然而，多个连续出现的 <dt> 元素都将由出现在它们后面的第一个 <dd> 元素定义。 
+	<dd> 元素（HTML 描述元素）用来指明一个描述列表  (<dl>) 元素中一个术语的描述。这个元素只能作为描述列表元素的子元素出现，并且必须跟着一个 <dt> 元素。
+	实例1：
+	单条术语与描述
+	<dl>
+  <dt>Firefox</dt>
+  <dd>A free, open source, cross-platform, graphical web browser
+      developed by the Mozilla Corporation and hundreds of volunteers.
+  </dd>
+  <!-- other terms and definitions -->
+  </dl>
+  生成：
+  	Firefox
+ A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.
+
+ 	实例2：
+ 	多条术语，单条描述
+ 	<dl>
+   <dt>Firefox</dt>
+   <dt>Mozilla Firefox</dt>
+   <dt>Fx</dt>
+   <dd>A free, open source, cross-platform, graphical web browser
+      developed by the Mozilla Corporation and hundreds of volunteers.</dd>
+
+   <!-- other terms and definitions -->
+   </dl>
+   生成：
+   Firefox
+   Mozilla Firefox
+   Fx
+   A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.
+
+   实例3：
+   单条术语，多条描述
+    <dl>
+    <dt>Firefox</dt>
+    <dd>A free, open source, cross-platform, graphical web browser
+      developed by the Mozilla Corporation and hundreds of volunteers.</dd>
+    <dd>The Red Panda also known as the Lesser Panda, Wah, Bear Cat or Firefox,
+      is a mostly herbivorous mammal, slightly larger than a domestic cat
+      (60 cm long).</dd>
+
+    <!-- other terms and definitions -->
+    </dl>
+    生成：
+    Firefox
+    A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.
+    The Red Panda also known as the Lesser Panda, Wah, Bear Cat or Firefox, is a mostly herbivorous mammal, slightly larger than a domestic cat (60 cm long).
+
+    实例4：
+    多条术语，多条描述
+    <dl>
+    <dt>Name</dt>    
+    <dd>Godzilla</dd>
+    <dt>Born</dt>
+    <dd>1952</dd>
+    <dt>Birthplace</dt>
+    <dd>Japan</dd>
+    <dt>Color</dt>
+    <dd>Green</dd>
+    </dl>
+    生成：
+ 	Name
+     Godzilla
+        Born
+          1952
+     Birthplace
+          Japan
+     Color
+         Green
+
+
+    3.<div>
+    <div> 元素 (或 HTML 文档分区元素) 是一个通用型的流内容容器，它在语义上不代表任何特定类型的内容，它可以被用来对其它元素进行分组，一般用于样式化相关的需求（使用 class 或 id 特性) 或者对具有相同特性的一组元素进行分组 (比如 lang)，它应该在没有任何其它语义元素可用是才使用 (比如 <article> 或 <nav>) 。
+    实例：
+    <div>
+      <p>这里可以是任何内容，比如 &lt;p&gt;, &lt;table&gt;，一切由你作主。</p>
+    </div>
+    生成：
+    这里可以是任何内容，比如 <p>, <table>，一切由你作主。
+
+    4.<figure>、<figcaption>
+    <figure> 元素代表一段独立的内容, 经常与说明(caption) <figcaption> 配合使用, 并且作为一个独立的引用单元。当它属于主体(main flow)时，它的位置独立于主体。这个标签经常是在主文中引用的图片，插图，表格，代码段等等，当这部分转移到附录中或者其他页面时不会影响到主体。<figcaption> 元素 是与其相关联的图片的说明/标题，用于描述其父节点 <figure> 元素里的其他数据。这意味着 <figcaption> 在<figure> 块里是第一个或最后一个。同时 HTML Figcaption 元素是可选的；如果没有该元素，这个父节点的图片只是会没有说明/标题。
+    实例：
+    <figure>
+     <p>
+    Depression is running through my head,<br>
+    These thoughts make me think of death,<br>
+    A darkness which blanks my mind,<br>
+    A walk through the graveyard, what can I find?....
+    </p>
+    <figcaption><cite>Depression</cite>. By: Darren Harris</figcaption>
+    </figure>
+    生成：
+    Depression is running through my head,
+    These thoughts make me think of death,
+    A darkness which blanks my mind,
+    A walk through the graveyard, what can I find?....
+
+    Depression. By: Darren Harris
+
+    5.<hr>
+    <hr> 元素表示段落级元素之间的主题转换（例如，一个故事中的场景的改变，或一个章节的主题的改变）。在HTML的早期版本中，它是一个水平线。现在它仍能在可视化浏览器中表现为水平线，但目前被定义为语义上的，而不是表现层面上。
+    实例：
+    <p>This is the first paragraph of text. This is the first paragraph of text.
+    This is the first paragraph of text. This is the first paragraph of text.</p>
+
+   <hr>
+
+   <p>This is second paragraph of text. This is second paragraph of text.
+   This is second paragraph of text. This is second paragraph of text.</p>
+   生成：
+   This is the first paragraph of text. This is the first paragraph of text. This is the first paragraph of text. This is the first paragraph of text.
+
+   This is second paragraph of text. This is second paragraph of text. This is second paragraph of text. This is second paragraph of text.
+
+   6.<main>
+   Main元素(<main>)呈现了文档<body>或应用的主体部分。主体部分由与文档直接相关，或者扩展于文档的中心主题、应用的主要功能部分的内容组成。这部分内容在文档中应当是独一无二的，不包含任何在一系列文档中重复的内容，比如侧边栏，导航栏链接，版权信息，网站logo，搜索框（除非搜索框作为文档的主要功能）。<main> 标签不能 是以下元素的继承<article>, <aside>, <footer>, <header>, 或 <nav> 。在一个文档中，不能 出现一个以上的 <main>标签
+   实例：
+   <!-- other content -->
+
+  <main>
+  <h1>Apples</h1>
+  <p>The apple is the pomaceous fruit of the apple tree.</p>
+  
+  <article>
+    <h2>Red Delicious</h2>
+    <p>These bright red apples are the most common found in many
+    supermarkets.</p>
+    <p>... </p>
+    <p>... </p>
+  </article>
+
+  <article>
+    <h2>Granny Smith</h2>
+    <p>These juicy, green apples make a great filling for
+    apple pies.</p>
+    <p>... </p>
+    <p>... </p>
+  </article>
+
+  </main>
+
+ <!-- other content -->
+ 生成：
+ Apples
+
+The apple is the pomaceous fruit of the apple tree.
+
+Red Delicious
+
+These bright red apples are the most common found in many supermarkets.
+
+...
+
+...
+
+Granny Smith
+
+These juicy, green apples make a great filling for apple pies.
+
+...
+
+...
+
+7. <ul>、<ol>、<li>
+<li> 元素 (或者 HTML 列表条目元素) 用于表示列表里的条目。它必须被包含在一个父元素里：一个有顺序的列表(<ol>)，一个无顺序的列表(<ul>)，或者一个菜单 (<menu>)。在菜单或者无顺序的列表里，列表条目通常用点排列显示。在有顺序的列表里，列表条目通常是在左边有按升序排列计数的显示，例如数字或者字母。
+实例1：
+<ol>
+    <li>first item</li>
+    <li>second item</li>
+    <li>third item</li>
+</ol>
+生成：
+1.first item
+2.second item
+3.third item
+
+实例2：start属性
+<ol start="7">
+  <li>first item</li>
+  <li>second item</li>
+  <li>third item</li>
+</ol>
+生成：
+7.first item
+8.second item
+9.third item
+实例3：嵌套列表
+<ol>
+  <li>first item</li>
+  <li>second item      <!-- Look, the closing </li> tag is not placed here! -->
+    <ol>
+      <li>second item first subitem</li>
+      <li>second item second subitem</li>
+      <li>second item third subitem</li>
+    </ol>
+  </li>                <!-- Here is the closing </li> tag -->
+  <li>third item</li>
+</ol>
+生成：
+1.first item
+2.second item
+	1.second item first subitem
+	2.second item second subitem
+	3.second item third subitem
+3.third item
+实例4：Nested <ol> and <ul>
+<ol>
+  <li>first item</li>
+  <li>second item      <!-- Look, the closing </li> tag is not placed here! -->
+    <ul>
+      <li>second item first subitem</li>
+      <li>second item second subitem</li>
+      <li>second item third subitem</li>
+    </ul>
+  </li>                <!-- Here is the closing </li> tag -->
+  <li>third item</li>
+</ol>
+生成：
+1.first item
+2.second item
+	second item first subitem
+	second item second subitem
+	second item third subitem
+3.third item
+实例5：type属性
+<ol type='a'>
+    <li>first item</li>
+    <li>second item</li>
+    <li>third item</li>
+</ol>
+生成：
+a.first item
+b.second item
+c.third item
+
+ 8.<p>
+<p>元素（或者说 HTML 段落元素）表示文本的一个段落。该元素通常表现为一整块与相邻文本分离的文本，或以垂直的空白隔离或以首行缩进。另外，<p> 是块级元素。
+实例：
+<p>这是第一个段落。这是第一个段落。
+   这是第一个段落。这是第一个段落。
+</p>
+
+<p>这是第二个段落。这是第二个段落。
+   这是第二个段落。这是第二个段落。
+</p>
+生成：
+这是第一个段落。这是第一个段落。 这是第一个段落。这是第一个段落。
+
+这是第二个段落。这是第二个段落。 这是第二个段落。这是第二个段落。
+
+9. <pre>
+<pre> 元素表示预定义格式文本。在该元素中的文本通常按照原文件中的编排，以等宽字体的形式展现出来，文本中的空白符（比如空格和换行符）都会显示出来。(紧跟在 <pre> 开始标签后的换行符也会被省略)
+实例：
+<!-- Some example CSS code -->
+<pre>
+body {
+  color:red;
+}
+</pre>
+生成：
+body {
+  color:red;
+}
+
+10.<a> 
+<a> 元素  (或锚元素) 创建一个到其他网页，文件，同一页面内的位置，电子邮件地址或任何其他URL的超链接。
+属性：
+（1）href
+这是一个必需属性为锚定义一个超文本链接来源。这表示链接目标的URL或URL片段。URL片段是由一个hash符号（＃），它指定一个内部目标在当前文档中的位置（ID）开头的名字。URL不限于网页（HTTP）的文件。URL可能使用浏览器所支持的任何协议。例如，文件，FTP，大多数用户代理mailto工作。注意: 可以使用 href="#top" 或者 href="#" 链接返回到页面顶部。
+实例1-链接到外部地址:
+<a href="http://www.baidu.com/">百度</a>
+生成：
+点击“百度”会跳转网页
+实例2-链接到本页的某个部分
+<!-- links to element on this page with id="attr-href" -->
+<a href="#属性">
+Description of Same-Page Links
+</a>
+生成：
+相同页面链接的描述
+（2）target
+target
+该属性指定在何处显示链接的资源。 取值为标签（tab），窗口（window），或框架（iframe）等浏览上下文的名称或其他关键词。以下关键字具有特殊的意义:
+_self: 当前页面加载，即当前的响应到同一HTML 4 frame（或HTML5浏览上下文）。此值是默认的，如果没有指定属性的话。
+_blank: 新窗口打开，即到一个新的未命名的HTML4窗口或HTML5浏览器上下文
+_parent: 加载响应到当前框架的HTML4父框架或当前的HTML5浏览上下文的父浏览上下文。如果没有parent框架或者浏览上下文，此选项的行为方式相同_self。
+_top: IHTML4中：加载的响应成完整的，原来的窗口，取消所有其它frame。 HTML5中：加载响应进入顶层浏览上下文（即，浏览上下文，它是当前的一个的祖先，并且没有parent）。如果没有parent框架或者浏览上下文，此选项的行为方式相同_self
+（3）rel
+该属性指定了目标对象到链接对象的关系。该值是空格分隔的列表类型值。
+（4）download 
+此属性指示浏览器下载URL而不是导航到URL，因此将提示用户将其保存为本地文件。
+（5）无障碍协议
+锚点标签常常通过将 href 属性设置为 "#" 或 "javascript:void(0)或javascript:;" 来创造一个能阻止页面刷新的伪按钮的方式被滥用。 这些属性值会在拖动 / 复制链接时导致意外行为，在新窗口 / 新标签打开链接，加入书签以及 JavaScript 仍在下载时会出现错误或被禁用。这也会向辅助技术（如屏幕阅读器）传达不正确的语义。在这些情况下，推荐使用 <button> 来代替。通常情况下，您应该只将锚点用于正常的 URL 导航。 
+
+11.<abbr>
+<abbr>元素代表缩写，并可选择提供一个完整的描述。
+实例：
+<p>Tony Blair is the prime minister of the <abbr title="United Kingdom">UK</abbr></p>
+生成：
+Tony Blair is the prime minister of the UK
+
+12.<b>
+<b> 元素表示相对于普通文本字体上的区别，但不表示任何特殊的强调或者关联。它通常用在摘要中的关键字、审查中的产品名称或者其他需要显示为加粗的文字区域。它的另一个使用例子是用来标记一篇文章中每一段的引言。
+实例：
+<b>百度两下</b>
+生成字体加粗
+
+13.<bdi>
+<bdi> 元素 (双向隔离元素) 会隔离可能以不同方向进行格式化的外部文本。
+
+14.<bdo>
+<bdo> 元素 (HTML双向覆盖元素)用于覆盖当前文本的朝向，它使得字符的排列方式被给定的方向覆盖。
+
+15.<br>
+换行 <br> 在文本中产生一个换行（回车键）。这对于写诗或写一个地址来说显得很有用。它可以将行明显地分开。
+
+16.<cite>
+标签 (<cite>) 表示一个作品的引用。它必须包含引用作品的符合简写格式的标题或者URL。
+实例：
+More information can be found in <cite>[ISO-0000]</cite>.
+生成：
+More information can be found in [ISO-0000].
+
+17.<code>
+<code> 元素呈现一段计算机代码. 默认情况下, 它以浏览器的默认等宽字体显示.
+
+18.<data>
+<data> 元素 将一个指定内容和机器可读的翻译联系在一起。但如果内容是与 time 或者 date 相关的，一定要使用 <time>。
+
+19.<dfn>
+元素 (<dfn>) 表示术语的一个定义。
+实例：
+<!-- Define "The Internet" -->
+<p><dfn id="def-internet">The Internet</dfn> is a global system of interconnected networks that use the Internet Protocol Suite (TCP/IP) to serve billions of users worldwide.</p>
+<dl>
+  <!-- Define "World-Wide Web" and reference definition for "the Internet" -->
+  <dt>
+    <dfn>
+      <abbr title="World-Wide Web">WWW</abbr>
+    </dfn>
+  </dt>
+  <dd>The World-Wide Web (WWW) is a system of interlinked hypertext documents accessed on <a href="#def-internet">the Internet</a>.</dd>
+</dl>
+生成：
+The Internet is a global system of interconnected networks that use the Internet Protocol Suite (TCP/IP) to serve billions of users worldwide.
+
+WWW
+The World-Wide Web (WWW) is a system of interlinked hypertext documents accessed on the Internet.
+
+20.<em>)
+着重元素 (<em>) 标记出需要用户着重阅读的内容， <em> 元素是可以嵌套的，嵌套层次越深，则其包含的内容被认定为越需要着重阅读。
+
+21.<i>
+元素 <i> 用于表现因某些原因需要区分普通文本的一系列文本。例如技术术语、外文短语或是小说中人物的思想活动等，它的内容通常以斜体显示。
+该元素只在没有更适合的语义元素表示时使用。例如：
+使用<em> 表示强调或重读。
+使用 <strong> 表示重要性。
+使用 <mark> 表示相关性。
+使用<cite> 标记著作名，如一本书、剧本或是一首歌。
+使用 <dfn> 标记术语的定义实例。
+
+22.<kbd>
+键盘输入元素(<kbd>) 用于表示用户输入，它将产生一个行内元素，以浏览器的默认monospace字体显示。
+
+23.<mark>
+<mark>标签代表突出显示的文字,例如可以为了标记特定上下文中的文本而使用这个标签. 举个例子，它可以用来显示搜索引擎搜索后关键词。 
+
+24：<q>
+引用标签 (<q>)表示一个封闭的并且是短的行内引用的文本. 这个标签是用来引用短的文本，所以请不要引入换行符; 对于长的文本的引用请使用 <blockquote> 替代.cite
+这个属性的值是URL，意在指出被引用的文本的源文档或者源信息. 这个属性重在解释这个引用的参考或者是上下文.
+
+25.<var>
+<var> 标签表示变量的名称，或者由用户提供的值。
+实例：
+<p> A simple equation: <var>x</var> = <var>y</var> + 2 </p>
+生成：
+A simple equation: x = y + 2
+
+26.<u>
+<u> 元素使文本在其内容的基线下的一行呈现下划线。在HTML5中, 此元素表示具有未标注的文本跨度，显示渲染，非文本注释，例如将文本标记为中文文本中的专有名称(一个正确的中文标记), 或 将文本标记为拼写错误。
+
+27.<time>
+标签(<time>) 用来表示24小时制时间或者公历日期，若表示日期则也可包含时间和时区。此元素意在以机器可读的格式表示日期和时间。 有安排日程表功能的应用可以利用这一点。
+实例：
+<article>
+  <p>This article was created on <time pubdate>2011-01-28</time>.</p>
+</article>
+生成：
+This article was created on 2011-01-28.
+
+28.<sub>、<sup> 
+<sub> 元素定义了一个文本区域，出于排版的原因，与主要的文本相比，应该展示得更低并且更小。<sup> 元素定义了一个文本区域，出于排版的原因，与主要的文本相比，应该展示得更高并且更小。一般用于化学元素较多。
+实例：
+<p>The chemical formula of water: H<sub>2</sub>O</p>
+<p>This text is <sup>superscripted</sup></p>
+
+29.<strong>
+元素 (<strong>)表示文本十分重要，一般用粗体显示。
+
+30.<span>
+<span> 元素是短语内容的通用行内容器，并没有任何特殊语义。可以使用它来编组元素以达到某种样式意图（通过使用类或者Id属性），或者这些元素有着共同的属性，比如lang。应该在没有其他合适的语义元素时才使用它。<span> 与 <div> 元素很相似，但 <div> 是一个 块元素 而 <span> 则是 行内元素 .
+
+31.<samp>
+<samp> 元素用于标识计算机程序输出，通常使用浏览器缺省的 monotype 字体（例如 Lucida Console）
+
+32.<s>、<del>、<ins>
+<s> 元素 使用删除线（中划线）来渲染文本。使用 <s> 元素来表示不再相关，或者不再准确的事情。但是当表示文档编辑时，不提倡使用 <s> ；为此，提倡使用 <del> （中划线）和 <ins>（下划线） 元素。
+
+图片和多媒体
+1.<video>
+<video> 元素 用于在HTML或者XHTML文档中嵌入视频内容。
+
+2.<img>
+元素（ <img> ）代表文档中的一个图像。
+
+3.<area>
+<area> 元素 在图片上定义一个热点区域
+
+4.<audio>
+<audio> 元素用于在文档中表示音频内容。 <audio> 元素可以包含多个音频资源， 这些音频资源可以使用 src 属性或者<source> 元素来进行描述； 浏览器将会选择最合适的一个来使用。对于不支持<audio>元素的浏览器，<audio>元素也可以作为浏览器不识别的内容加入到文档中。
+
+
+
+
+
