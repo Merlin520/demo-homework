@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的导航</title>
+    <link rel="stylesheet" href="./stytle.css">
+</head>
+<body>
+    <header></header>
+    <main>
+        <div class="wrapper" id="main">
+        </div>
+    </main>
+    <footer></footer>
+
+    <script>
+
+        <!--声明数据结构-->
+        var keys = {<!--数组就是对象,数组里面有数组-->
+            0:{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',
+            length:10},
+            1:{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+            2:{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+            length:3
+        }
+
+        var hash ={
+            q:'qq.com',
+            w:'weibo.com',
+            e:'ele.me',
+            r:'renren.com',
+            t:'tainya.com',
+            y:'youtube.com',
+            u:'uc.com',
+            i:'iqiyi.com',
+            o:'',
+            p:'',
+        }
+
+        <!--取出localStorage中的zzz对应的hash-->
+        var hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null')
+        if(hashInLocalStorage){
+            hash = hashInLocalStorage
+        }
+        <!--取出LocalStorage中的uuu对应的hash-->
+
+
+        <!--遍历keys，生成kbd标签-->
+        index = 0 <!--创建3个div-->
+        while(index< keys['length']){<!--index取值0、1、2-->
+            div = document.createElement('div')<!--执行3次 创建3个div-->
+            div.className = 'row'<!--给div添加类-->
+            main.appendChild(div)
+            row = keys[index]<!--第一、二、三个数组-->
+            index2 = 0
+            while (index2 < row['length']){<!--三个数组里嵌套数组的length 10个kbd-->
+                kbd = document.createElement('kbd')<!--kbd插入到div里-->
+                span = document.createElement('span')
+                span.textContent = row[index2]<!--三个数组里嵌套数组的键值 -->
+                kbd.appendChild(span)
+                span.className = 'text'
+                kbd.className = 'key'<!--给class-->
+                button = document.createElement('button')
+                img = document.createElement('img')
+                if(hash[row[index2]]){
+                img.src = 'http://'+hash[row[index2]] +'/favicon.ico'<!--网址图标-->
+                }else {
+                    img.src ='./white.jpg'
+                }
+
+                img.onerror = function (error) {
+                    error.target.src = './white.jpg'
+                }
+
+                button.textContent = 'edit'
+                button.id = row[index2]
+                button.onclick = function (meiya) {
+                    button2 = meiya['target']
+                    img2 = button2.previousSibling
+                    key = meiya.target.id<!--q w e-->
+                    x = prompt('给我一个网址')<!--将网址给x-->
+                    hash[key] = x <!--将网址传给对应的Q W hash变更-->
+                    img2.src = 'http://'+ x +'/favicon.ico'
+                    img2.onerror = function (error) {
+                        error.target.src = './white.jpg'
+                    }
+
+                    localStorage.setItem('zzz',JSON.stringify(hash))
+                }
+
+                kbd.appendChild(img)
+                kbd.appendChild(button)
+                div.appendChild(kbd)<!--将文本内容插入到div里-->
+                index2 = index2 + 1
+            }
+            index = index + 1
+        }
+
+        document.onkeypress = function (meiya) {
+            key = meiya['key'] <!--显示用户的按键 Q W E ....-->
+            website = hash[key]<!-- Q W E 对应的网址-->
+            console.log(website)
+             window.open('http://' + website,'_blank')/*
+             新窗口打开
+             */
+        }
+
+    </script>
+
+
+
+</body>
+</html>
