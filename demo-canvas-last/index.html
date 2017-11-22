@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,
+            maximum-scale=1.0,minmum-scale=1.0">
+    <title>canvas</title>
+    <link rel="stylesheet" href="./stytle.css">
+    <script src=//at.alicdn.com/t/font_484024_s27re22g4tmlsor.js></script>
+</head>
+<body>
+<canvas id="canvas" width="300px" height="300px" ></canvas>
+<div id="actions" class="actions">
+
+    <svg id="pen" class="active icon" > //默认画笔active状态
+        <use xlink:href="#icon-pen"></use>
+    </svg>
+
+    <svg id="eraser" class="icon" >
+        <use xlink:href="#icon-eraser"></use>
+    </svg>
+
+    <svg id="clear" class="icon" >
+        <use xlink:href="#icon-shouyeicon04"></use>
+    </svg>
+
+    <svg id="save" class="icon" >
+        <use xlink:href="#icon-save"></use>
+    </svg>
+
+
+</div>
+
+<ol class="color">
+    <li id="red"class="red"></li>
+    <li id="green"class="green"></li>
+    <li id="blue"class="blue"></li>
+</ol>
+
+<ol class="sizes">
+    <li id="thin" class="thin"></li>
+    <li id="thick" class="thick"></li>
+</ol>
+
+<script>
+    var canvas = document.getElementById('canvas');//全局变量
+    var Context = canvas.getContext('2d');//全局变量
+    var pageWidth = document.documentElement.clientWidth;//死记硬背
+    var pageHeight = document.documentElement.clientHeight;//死记硬背
+    canvas.width = pageWidth;//获取画板页面高度、宽度
+    canvas.height = pageHeight;
+    window.onresize = function () {//移动时页面随之移动
+        var pageWidth = document.documentElement.clientWidth;//死记硬背
+        var pageHeight = document.documentElement.clientHeight;//死记硬背
+        canvas.width = pageWidth;//获取画板页面高度、宽度
+        canvas.height = pageHeight;
+    }
+
+    var using = false
+    var lastPoint = {x:undefined,y:undefined}
+
+    if(document.body.ontouchstart !== undefined){//特性检测
+        //触屏设备
+        canvas.ontouchstart = function (aaa) {
+            var x = aaa.touches[0].clientX//以视口为基准
+            var y = aaa.touches[0].clientY
+            if(eraserEnabled){
+                using = true
+                Context.clearRect(x-3,y-3,6,6)
+            }else {
+                using = true
+
+                lastPoint = {"x":x,"y":y}
+            }
+        }
+
+
+        canvas.ontouchmove = function (aaa) {
+            var x = aaa.touches[0].clientX//以视口为基准
+            var y = aaa.touches[0].clientY
+            if (eraserEnabled) {
+                if(using){
+                    Context.clearRect(x-3,y-3,6,6)
+                }
+            }else {
+                if (using) {
+                    var x = aaa.touches[0].clientX//以视口为基准
+                    var y = aaa.touches[0].clientY
+                    var newPoint = {"x": x, "y": y}
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+                    lastPoint = newPoint
+                }
+            }
+        }
+
+        canvas.ontouchend = function (aaa) {
+            using = false
+        }
+    }else {
+        //非触屏设备
+        canvas.onmousedown = function (aaa) {
+
+            var x = aaa.clientX//以视口为基准
+            var y = aaa.clientY
+            if(eraserEnabled){
+                using = true
+                Context.clearRect(x-3,y-3,6,6)
+            }else {
+                using = true
+
+                lastPoint = {"x":x,"y":y}
+            }
+        }
+        canvas.onmousemove = function (aaa) {
+            var x = aaa.clientX//以视口为基准
+            var y = aaa.clientY
+            if (eraserEnabled) {
+                if(using){
+                    Context.clearRect(x-3,y-3,6,6)
+                }
+            }else {
+                if (using) {
+                    var x = aaa.clientX//以视口为基准
+                    var y = aaa.clientY
+                    var newPoint = {"x": x, "y": y}
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+                    lastPoint = newPoint
+                }
+            }
+        }
+        canvas.onmouseup = function (aaa) {
+            using = false
+        }
+    }
+
+
+
+
+
+    function drawCircle(x,y,radius) {
+        Context.beginPath();
+        Context.arc(x, y, radius, 0, 2 * Math.PI);
+        Context.fillStyle = 'black';
+        Context.fill();
+    }
+    function drawLine(x1, y1, x2, y2) {
+        Context.beginPath();
+        Context.moveTo(x1, y1)
+        Context.lineWidth = lineWidth//获取当前画线粗度
+        Context.lineTo(x2, y2)
+        Context.stroke()
+        Context.closePath();
+    }
+    var eraserEnabled = false
+//    eraser.onclick = function () {//点橡皮
+//        eraserEnabled = true
+//        actions.className = 'actions x'
+//    }
+//    brush.onclick = function () {//点画笔
+//        eraserEnabled = false
+//        actions.className = 'actions'
+//    }
+    pen.onclick = function () {//onclick兼容鼠标、触屏
+        eraserEnabled = false
+        pen.classList.add('active')//点击变红，同时红色消失
+        eraser.classList.remove('active')
+    }
+    eraser.onclick = function () {
+        eraserEnabled = true
+        eraser.classList.add('active')
+        pen.classList.remove('active')
+    }
+
+    red.onclick = function () {//画笔改变颜色
+        Context.strokeStyle = 'red'
+        red.classList.add('active')
+        green.classList.remove('active')
+        blue.classList.remove('active')
+    }
+
+    green.onclick = function () {
+        Context.strokeStyle = 'green'
+        green.classList.add('active')
+        red.classList.remove('active')
+        blue.classList.remove('active')
+    }
+
+    blue.onclick = function () {
+        Context.strokeStyle = 'blue'
+        blue.classList.add('active')
+        red.classList.remove('active')
+        green.classList.remove('active')
+    }
+
+    var lineWidth = 4;//默认画线粗度
+    thin.onclick = function () {
+        lineWidth = 4;
+    }
+
+    thick.onclick = function () {
+        lineWidth = 8;
+    }
+
+    clear.onclick = function () {
+        Context.clearRect(0,0,canvas.width,canvas.height)//清屏
+    }
+
+    save.onclick = function () {
+        var url = canvas.toDataURL("image/png")
+        var a = document.createElement('a')
+        document.body.appendChild(a)
+        a.href = url
+        a.download = '我的画'
+        a.target = '_blank'
+        a.click()
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>
