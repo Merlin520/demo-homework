@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,
+            maximum-scale=1.0,minmum-scale=1.0">
+    <title>canvas</title>
+    <link rel="stylesheet" href="./stytle.css">
+</head>
+<body>
+<canvas id="canvas" width="300px" height="300px" ></canvas>
+<div id="actions" class="actions">
+    <button id="eraser">橡皮擦</button>
+    <button id="brush">画笔</button>
+</div>
+
+<script>
+    var canvas = document.getElementById('canvas');//全局变量
+    var Context = canvas.getContext('2d');//全局变量
+    var pageWidth = document.documentElement.clientWidth;//死记硬背
+    var pageHeight = document.documentElement.clientHeight;//死记硬背
+    canvas.width = pageWidth;//获取画板页面高度、宽度
+    canvas.height = pageHeight;
+    window.onresize = function () {//移动时页面随之移动
+        var pageWidth = document.documentElement.clientWidth;//死记硬背
+        var pageHeight = document.documentElement.clientHeight;//死记硬背
+        canvas.width = pageWidth;//获取画板页面高度、宽度
+        canvas.height = pageHeight;
+    }
+
+    var using = false
+    var lastPoint = {x:undefined,y:undefined}
+
+    if(document.body.ontouchstart !== undefined){//特性检测
+        //触屏设备
+        canvas.ontouchstart = function (aaa) {
+            var x = aaa.touches[0].clientX//以视口为基准
+            var y = aaa.touches[0].clientY
+            if(eraserEnabled){
+                using = true
+                Context.clearRect(x-3,y-3,6,6)
+            }else {
+                using = true
+
+                lastPoint = {"x":x,"y":y}
+            }
+        }
+
+
+        canvas.ontouchmove = function (aaa) {
+            var x = aaa.touches[0].clientX//以视口为基准
+            var y = aaa.touches[0].clientY
+            if (eraserEnabled) {
+                if(using){
+                    Context.clearRect(x-3,y-3,6,6)
+                }
+            }else {
+                if (using) {
+                    var x = aaa.touches[0].clientX//以视口为基准
+                    var y = aaa.touches[0].clientY
+                    var newPoint = {"x": x, "y": y}
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+                    lastPoint = newPoint
+                }
+            }
+        }
+
+        canvas.ontouchend = function (aaa) {
+            using = false
+        }
+    }else {
+        //非触屏设备
+        canvas.onmousedown = function (aaa) {
+
+            var x = aaa.clientX//以视口为基准
+            var y = aaa.clientY
+            if(eraserEnabled){
+                using = true
+                Context.clearRect(x-3,y-3,6,6)
+            }else {
+                using = true
+
+                lastPoint = {"x":x,"y":y}
+            }
+        }
+        canvas.onmousemove = function (aaa) {
+            var x = aaa.clientX//以视口为基准
+            var y = aaa.clientY
+            if (eraserEnabled) {
+                if(using){
+                    Context.clearRect(x-3,y-3,6,6)
+                }
+            }else {
+                if (using) {
+                    var x = aaa.clientX//以视口为基准
+                    var y = aaa.clientY
+                    var newPoint = {"x": x, "y": y}
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+                    lastPoint = newPoint
+                }
+            }
+        }
+        canvas.onmouseup = function (aaa) {
+            using = false
+        }
+    }
+
+
+
+
+
+    function drawCircle(x,y,radius) {
+        Context.beginPath();
+        Context.arc(x, y, radius, 0, 2 * Math.PI);
+        Context.fillStyle = 'black';
+        Context.fill();
+    }
+    function drawLine(x1, y1, x2, y2) {
+        Context.beginPath();
+        Context.moveTo(x1, y1)
+        Context.lineWidth = 2
+        Context.lineTo(x2, y2)
+        Context.stroke()
+        Context.closePath();
+    }
+    var eraserEnabled = false
+    eraser.onclick = function () {//点橡皮
+        eraserEnabled = true
+        actions.className = 'actions x'
+    }
+    brush.onclick = function () {//点画笔
+        eraserEnabled = false
+        actions.className = 'actions'
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

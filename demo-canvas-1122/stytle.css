@@ -1,0 +1,25 @@
+#canvas {
+    background: greenyellow;
+}
+
+body {
+    margin: 0px;
+}
+
+.actions {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+}
+
+.actions > #brush {/*默认隐藏画笔*/
+    display: none;
+}
+
+.actions.x> #brush {/* x状态-画笔出现*/
+    display: inline-block;
+}
+
+.actions.x> #eraser {/* x状态-橡皮不出现*/
+    display: none;
+}
