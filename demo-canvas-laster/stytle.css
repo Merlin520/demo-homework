@@ -1,0 +1,130 @@
+#canvas {
+    background: greenyellow;
+}
+
+body {
+    /*margin: 0px;*/
+    overflow: hidden;/*除掉手机上的滚动条--好像没有用*/
+    position: fixed;/*除掉手机上的滚动条*/
+}
+
+.actions {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    padding: 10px;
+}
+
+/*.actions > #brush {!*默认隐藏画笔*!*/
+    /*display: none;*/
+/*}*/
+
+/*.actions.x> #brush {!* x状态-画笔出现*!*/
+    /*display: inline-block;*/
+/*}*/
+
+/*.actions.x> #eraser {!* x状态-橡皮不出现*!*/
+    /*display: none;*/
+/*}*/
+
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.actions svg {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s;/*动画-大、逐渐过渡*/
+    padding: 0px 10px;
+}
+
+.actions svg.active {
+    fill:red;
+    transform: scale(1.2);/*点击变大*/
+}
+ol,li {
+    list-style: none;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.color {
+    position: fixed;
+    top: 60px;
+    left: 16px;
+}
+
+.color > li {
+    width: 20px;
+    height: 20px;
+    margin: 10px 0px;
+    border-radius: 50%;
+}
+
+.color > li.red {
+    background: red;
+
+}
+
+.color > li.green {
+    background: green;
+}
+
+.color > li.blue {
+    background: blue;
+}
+
+.color > li.active {
+    transform: scale(1.2);
+    transition: all 0.3s;
+}
+
+.sizes {
+    position: fixed;
+    top: 160px;
+    left: 12px;
+}
+
+.sizes > .thin {
+    height: 0px;
+    width: 20px;
+    border-top:4px solid black;/*为什么是border-top*/
+    position: relative;
+    margin: 8px 5px;
+}
+
+
+.sizes > .thick{
+    height: 0px;
+    width: 20px;
+    border-top: 6px solid black;
+    position: absolute;
+    margin: 10px 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
