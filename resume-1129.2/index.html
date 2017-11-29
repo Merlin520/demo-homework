@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>梅亚的简历</title>
+    <link rel="stylesheet" href="./a.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="//at.alicdn.com/t/font_455161_ihzbdho0iha7nwmi.js"></script>
+    <style type="text/css">
+      .icon {
+         width: 1em; height: 1em;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+      }
+  </style>
+</head>
+
+
+<body>
+
+<div id="welcomeyou" class="welcomeyou active">
+    <div class="wrapper">
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+</div>
+
+  <div  id="topNAVbar" class="top-nav-bar">
+    <div class="top-nav-bar-inner clearfix">
+        <a class="logo" href="#" alt="logo" style="float:left;">
+            <span class="rs">RS</span><span class="card">card</span>
+          </a>
+          <nav style="float:right;">
+        <ul class="clearfix">
+            <li >
+              <a href="#">关于</a>
+            </li>
+            <li >
+              <a href="#">技能</a>
+            </li>
+            <li >
+              <a href="#">作品</a>
+            </li>
+            <li >
+              <a href="#">博客</a>
+            </li>
+            <li >
+              <a href="#">日历</a>
+            </li>
+            <li >
+              <a href="#">联系方式</a>
+            </li>
+            <li >
+              <a href="#">其他</a>
+            </li>
+        </ul>
+          </nav>
+    </div>
+  </div>
+  <div class="banner">
+    <div class="mask"></div>
+  </div>
+
+  <main>
+      <div class="usercard">
+      <div class="pictureAndText clearfix">
+        <div class="picture">
+        <img src="./img/wl.jpg" alt="头像">
+      </div>
+      <div class="text">
+          <span class="welcome">Hello
+            <span class="triangle"></span>
+          </span>
+          <h1>梅亚</h1>
+          <p>前端开发工程师</p>
+          <hr>
+          <dl>
+              <dt>姓名</dt>
+              <dd>梅亚</dd>
+              <dt>性别</dt>
+              <dd>男</dd>
+              <dt>年龄</dt>
+              <dd>20</dd>
+          </dl>
+      </div>
+        </div>
+        <footer class="media">
+            <a href="#">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-daorujianshu"></use>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-jirengulogozaoqi"></use>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-twitter"></use>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-weibo"></use>
+                </svg>
+            </a>
+        </footer>
+      </div>
+    <p class="downloadResume-wrapper"  ><!--内联元素居中只能让父元素居中-->
+    <a href="./resume.pdf " target="_blank" class="downloadResume" download>下载PDF简历</a>
+    </p>
+    <p class="selfIntroduction">
+        梅亚，家穷人丑，身高一米四九。
+    </p>    
+  </main>
+
+  <section class="skills">
+      <h2>技能</h2>
+      <ol class="clearfix">
+        <li>
+          <h3>
+          html
+          </h3>
+          <div class="progressBar">
+            <div class="progress" style="width:30%">
+            </div>
+          </div>
+        </li>
+        <li>
+            <h3>
+            css
+            </h3>
+            <div class="progressBar">
+              <div class="progress" style="width:40%">
+              </div>
+            </div>
+          </li>
+          <li>
+              <h3>
+              javascript
+              </h3>
+              <div class="progressBar">
+                <div class="progress" style="width:50%">
+                </div>
+              </div>
+            </li>
+            <li>
+                <h3>
+                http
+                </h3>
+                <div class="progressBar">
+                  <div class="progress" style="width:60%">
+                  </div>
+                </div>
+              </li>
+              <li>
+                  <h3>
+                  html
+                  </h3>
+                  <div class="progressBar">
+                    <div class="progress" style="width:70%">
+                    </div>
+                  </div>
+                </li>
+                <li>
+                    <h3>
+                    html
+                    </h3>
+                    <div class="progressBar">
+                      <div class="progress" style="width:70%">
+                      </div>
+                    </div>
+                  </li>
+      </ol>
+    </section>
+
+    <section class="portfolio">
+      <h2>作品集</h2>
+      <nav>
+        <ol class="clearfix">
+          <li id="portfolio1">所有</li>
+          <li id="portfolio2">框架</li>
+          <li id="portfolio3">原生js</li>
+        </ol>
+        <div id="portfolioBar" class="bar state-1">
+          <div class="bar-inner"></div>
+        </div>
+      </nav>
+      <script>
+        portfolio1.onclick= function(){
+          portfolioBar.className = 'bar state-1'
+        };
+        
+        portfolio2.onclick= function(){
+          portfolioBar.className = 'bar state-2'
+        };
+
+        portfolio3.onclick= function(){
+          portfolioBar.className = 'bar state-3'
+        }
+      </script>
+
+      <div class="works" style="height:600px;">
+        <div class="big" style="top:33px; left:55px;">
+          <img src="./img/8.jpg" alt="作品1">
+        </div>
+        <div class="small" style="top:0; left:565px;">
+            <img src="./img/7.jpg" alt="作品2">
+        </div>
+        <div class="small" style="top:307px; left:565px;">
+            <img src="./img/9.jpg" alt="作品3">        
+        </div>
+      </div>
+        </section>
+
+
+
+
+        <script>
+            setTimeout(function () {
+                welcomeyou.classList.remove('active')
+            },1000)
+
+         window.onscroll = function (eeeee) {
+             if(window.scrollY > 0){
+                 topNAVbar.classList.add('sticky')
+             }else {
+                 topNAVbar.classList.remove('sticky')
+             }
+         }
+        </script>
+
+
+
+    </body>
+
+</html>
