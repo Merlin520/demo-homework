@@ -1,0 +1,56 @@
+.wrapper {
+
+    height: 100px;
+    width: 100px;
+    position: relative;
+
+}
+
+.circle {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    height: 0px;
+    width: 0px;
+    background-color: darkgray;
+    border-radius: 50px;
+    animation: meiya1 2s linear infinite;/*infinite-表示循环linear-表示线性*/
+}
+
+.circle:nth-child(2){/*第二个圆延迟*/
+    animation-delay: 0.5s;
+}
+
+@keyframes meiya1 {
+    0%{
+        width: 0px;height: 0px;opacity: 1;/*opacity-表示透明度*/
+    }
+    100%{
+        width: 100px;height: 100px;opacity: 0;
+    }
+}
+
+.welcomeyou {
+    display: none;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background: yellowgreen;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcomeyou.active {
+    display: flex;
+}
+
+
+
+
+
